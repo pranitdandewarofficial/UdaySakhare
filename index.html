@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uday Photography</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffd631;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 5px 10px;
+            transition: color 0.3s, background 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffcc00;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 5px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ffcc00;
+            transform: scale(1.2);
+        }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('https://media.fastdl.app/get?__sig=nyacrAe9bOX_hIuSK74c0w&__expires=1740382709&uri=https%3A%2F%2Finstagram.ffru8-1.fna.fbcdn.net%2Fv%2Ft51.29350-15%2F473031181_593632226733949_739070437476923275_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_tt6%26_nc_ht%3Dinstagram.ffru8-1.fna.fbcdn.net%26_nc_cat%3D101%26_nc_oc%3DQ6cZ2AHwcstV6Q0wSuLj327OHIBhEZy15baIgN4zk70aLquwPJkcVcDkEVgWinzos0ox_aY%26_nc_ohc%3DCC4W8LhOhscQ7kNvgH9Bj2i%26_nc_gid%3D9ee403dfa84b41c48f2141df8b8488ab%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYDb8xKx5yWrDzD2QkCOTqx3zHwuoTUfDA82mm6Fi-nvpg%26oe%3D67C1F453%26_nc_sid%3Dd885a2&filename=473031181_593632226733949_739070437476923275_n.jpg') no-repeat center/cover;
+            position: relative;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero h1, .hero p, .hero .btn {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .hero p {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        .btn {
+            padding: 14px 28px;
+            background: #ffcc00;
+            color: #111;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #fff;
+            color: #ffcc00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.5);
+        }
+        /* About Section */
+        .about {
+            padding: 80px 40px;
+            background: #111;
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+        .about p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        /* Services Section */
+        .services {
+            padding: 80px 40px;
+            background: #1a1a1a;
+        }
+        .services h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #ffcc00;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-item {
+            background: #222;
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+        }
+        .service-item h3 {
+            font-size: 22px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .service-item p {
+            font-size: 16px;
+            color: #ddd;
+        }
+        /* Gallery */
+        .gallery-section {
+            padding: 100px 40px;
+            background: #111;
+        }
+        .category {
+            font-size: 32px;
+            font-weight: 600;
+            color: #ffcc00;
+            margin: 60px 0 30px;
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .gallery img:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.2);
+        }
+        /* Contact */
+        .contact {
+            padding: 80px 40px;
+            background: #1a1a1a;
+        }
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #ffcc00;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact input,
+        .contact textarea {
+            padding: 12px;
+            border: 1px solid #ffcc00;
+            border-radius: 8px;
+            background: #222;
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .contact input:focus,
+        .contact textarea:focus {
+            outline: none;
+            border-color: #fff;
+        }
+        .contact textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .contact button {
+            padding: 14px;
+            background: #fdcc07;
+            color: #111;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .contact button:hover {
+            background: #fff;
+            color: #80754a;
+            transform: translateY(-3px);
+        }
+        /* Footer */
+        footer {
+            padding: 30px 40px;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            nav ul {
+                margin: 15px 0;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .gallery, .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Uday Photography</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/uday_sakhare_photography/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Uday Photography</h1>
+        <p>Capturing Moments, Creating Memories</p>
+        <a href="#gallery" class="btn">Explore Gallery</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Uday</h2>
+        <p>Meet Uday, a passionate photographer, cinematographer, editor, and graphic designer with a keen eye for detail and a love for storytelling through visuals. With years of experience, Uday transforms fleeting moments into timeless memories, blending creativity with technical expertise. Whether it’s capturing the beauty of nature, the emotions of a portrait, or the grandeur of an event, Uday’s multifaceted skills ensure every project is a masterpiece.</p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Photography</h3>
+                <p>From stunning landscapes to intimate portraits, we capture the essence of every moment with precision and artistry.</p>
+            </div>
+            <div class="service-item">
+                <h3>Cinematography</h3>
+                <p>Bring your story to life with cinematic videos that combine breathtaking visuals and seamless storytelling.</p>
+            </div>
+            <div class="service-item">
+                <h3>Editing</h3>
+                <p>Expert photo and video editing to enhance your visuals, ensuring every detail shines with perfection.</p>
+            </div>
+            <div class="service-item">
+                <h3>Graphic Design</h3>
+                <p>Creative designs for branding, promotional materials, and more, tailored to your unique vision.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="category">Nature</div>
+        <div class="gallery">
+            <img src="https://media.fastdl.app/get?__sig=qF7OCe2KmAGUo5HBnqamJw&__expires=1740381208&uri=https%3A%2F%2Fscontent-iev1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F464122463_18445311787071797_3736177316307922346_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-iev1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGfHbk_kwyYRoAJulC_D6IbgG7ZU8j-91sWF4KDKnsqKk0JQpLwXOOgKoaY6ls6Ox8%26_nc_ohc%3Dv579iJXpF7QQ7kNvgF3iWF-%26_nc_gid%3D593216742d17424ba928a6ec6e401187%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYBVW0mRC7dQrmQMk9axitN1-T1FKsrjjnC6vK450EQD5g%26oe%3D67C1D332%26_nc_sid%3Dd885a2&filename=464122463_18445311787071797_3736177316307922346_n.jpg" alt="Nature Forest">
+            <img src="https://media.fastdl.app/get?__sig=1MKEr1TIUUnolLh8HlY4tQ&__expires=1740381208&uri=https%3A%2F%2Fscontent-iev1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F464141053_18445311796071797_1432914611917010527_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-iev1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGfHbk_kwyYRoAJulC_D6IbgG7ZU8j-91sWF4KDKnsqKk0JQpLwXOOgKoaY6ls6Ox8%26_nc_ohc%3DbWIvEwMQOJwQ7kNvgE_3msN%26_nc_gid%3D593216742d17424ba928a6ec6e401187%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYCEpgJzX50lRs_9eZlrMvRhj13_DbVlKOKZaMZKNSoJjw%26oe%3D67C1F182%26_nc_sid%3Dd885a2&filename=464141053_18445311796071797_1432914611917010527_n.jpg" alt="Nature Water">
+            <img src="https://media.fastdl.app/get?__sig=A1gZhS8EYhqvS36xrq1Ezg&__expires=1740381208&uri=https%3A%2F%2Fscontent-iev1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F464122455_18445311820071797_1651329662572022657_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-iev1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGfHbk_kwyYRoAJulC_D6IbgG7ZU8j-91sWF4KDKnsqKk0JQpLwXOOgKoaY6ls6Ox8%26_nc_ohc%3D1iJ2LZr5huAQ7kNvgHKB4YZ%26_nc_gid%3D593216742d17424ba928a6ec6e401187%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYD3XSgAoJ1Gj8KgxACOrVzFwZ8-IwwBhj3J_9VYLi207w%26oe%3D67C1EA9F%26_nc_sid%3Dd885a2&filename=464122455_18445311820071797_1651329662572022657_n.jpg" alt="Nature Wildlife">
+        </div>
+        <div class="category">Portraits</div>
+        <div class="gallery">
+            <img src="https://media.fastdl.app/get?__sig=utCMBmaT9Iim32-foTvq5A&__expires=1740380420&uri=https%3A%2F%2Fscontent-prg1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F477505791_18465654166071797_8001692025466641878_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-prg1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AF6oAJW4LRxIHh0gnBAinGSA1lj1Lmk5v-UpUo4D9Fy_Uq-qZN2rEECJ6ecSLemTo0%26_nc_ohc%3Dk849GnnxtH4Q7kNvgEyTGeD%26_nc_gid%3D10accad2ec1a492c97b1a291a4517aff%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYBNaNDzkhSYLQHjzurwqfasSpD4qTy7dKNGIGKlLITQEg%26oe%3D67C1FFB3%26_nc_sid%3Dd885a2&filename=477505791_18465654166071797_8001692025466641878_n.jpg" alt="Portrait Man">
+            <img src="https://media.fastdl.app/get?__sig=Gs5KYZSgjdNTJd78sH56qA&__expires=1740380420&uri=https%3A%2F%2Fscontent-prg1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F479062325_18465654181071797_3463635550834329603_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-prg1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AF6oAJW4LRxIHh0gnBAinGSA1lj1Lmk5v-UpUo4D9Fy_Uq-qZN2rEECJ6ecSLemTo0%26_nc_ohc%3DobwabKu__HcQ7kNvgGAZSTx%26_nc_gid%3D10accad2ec1a492c97b1a291a4517aff%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYB1VLIX2FK0l79VP7hJ6Vm2z8kqbqA2RfXI04VDfNi8nQ%26oe%3D67C1FF84%26_nc_sid%3Dd885a2&filename=479062325_18465654181071797_3463635550834329603_n.jpg" alt="Portrait Woman">
+            <img src="https://media.fastdl.app/get?__sig=rqowy7NXkD3Vj89Yv4XgXg&__expires=1740380420&uri=https%3A%2F%2Fscontent-prg1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F477101928_18465654184071797_7433529062157636994_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-prg1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AF6oAJW4LRxIHh0gnBAinGSA1lj1Lmk5v-UpUo4D9Fy_Uq-qZN2rEECJ6ecSLemTo0%26_nc_ohc%3DPP18jgZDYvsQ7kNvgGYjQNq%26_nc_gid%3D10accad2ec1a492c97b1a291a4517aff%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYAmVLwrxia3lNcM3KIpGERuzfRpaIGLNdxJhKNo73vH6Q%26oe%3D67C1CE0E%26_nc_sid%3Dd885a2&filename=477101928_18465654184071797_7433529062157636994_n.jpg" alt="Portrait Smile">
+        </div>
+        <div class="category">Events</div>
+        <div class="gallery">
+            <img src="https://media.fastdl.app/get?__sig=DVI5Wchtjed4D9a43PlnHw&__expires=1740380146&uri=https%3A%2F%2Finstagram.fmex2-1.fna.fbcdn.net%2Fv%2Ft51.29350-15%2F438966354_1463727594578951_1049904509526628297_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_tt6%26_nc_ht%3Dinstagram.fmex2-1.fna.fbcdn.net%26_nc_cat%3D111%26_nc_oc%3DQ6cZ2AHMTFVpvIy7scH2Yuoa5pq2mLqAr0BGszyhDhL8eGnmbogRwxD-OxROX167FhFOof0%26_nc_ohc%3DV8a0Jq0C9vAQ7kNvgEA-ty0%26_nc_gid%3Da94d1fdd8e474bee879d056dd01ea4dc%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYAHtVHKGr5D43Fz1YPHq6QVG-3DJAXBUrRHJziDwQ6-bw%26oe%3D67C1E269%26_nc_sid%3Dd885a2&filename=438966354_1463727594578951_1049904509526628297_n.jpg" alt="Event Wedding">
+            <img src="https://media.fastdl.app/get?__sig=Qoej5Ab-vmrNZAjoGAKk2g&__expires=1740380146&uri=https%3A%2F%2Finstagram.fmex2-1.fna.fbcdn.net%2Fv%2Ft51.29350-15%2F438874487_1133141754666417_8792924971464386229_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_tt6%26_nc_ht%3Dinstagram.fmex2-1.fna.fbcdn.net%26_nc_cat%3D109%26_nc_oc%3DQ6cZ2AHMTFVpvIy7scH2Yuoa5pq2mLqAr0BGszyhDhL8eGnmbogRwxD-OxROX167FhFOof0%26_nc_ohc%3DvJRgb-uYvbkQ7kNvgEb6ojO%26_nc_gid%3Da94d1fdd8e474bee879d056dd01ea4dc%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYC77VYYv2mJLOnSHi_kLWZjFZd1XdK1PaLBUBe9YHYc2g%26oe%3D67C1EB9D%26_nc_sid%3Dd885a2&filename=438874487_1133141754666417_8792924971464386229_n.jpg" alt="Event Party">
+            <img src="https://media.fastdl.app/get?__sig=XUJyj66mYivCZs8ztLEIkw&__expires=1740380146&uri=https%3A%2F%2Finstagram.fmex2-2.fna.fbcdn.net%2Fv%2Ft51.29350-15%2F438871267_1478625326409709_6604945506336701720_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_tt6%26_nc_ht%3Dinstagram.fmex2-2.fna.fbcdn.net%26_nc_cat%3D101%26_nc_oc%3DQ6cZ2AHMTFVpvIy7scH2Yuoa5pq2mLqAr0BGszyhDhL8eGnmbogRwxD-OxROX167FhFOof0%26_nc_ohc%3DQdcMlmz3bJkQ7kNvgGEg2BL%26_nc_gid%3Da94d1fdd8e474bee879d056dd01ea4dc%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYDUWwCf2GtUvcPZzdkRMpPxU_ffB1NAU4AuwYGUqF_y9w%26oe%3D67C1F758%26_nc_sid%3Dd885a2&filename=438871267_1478625326409709_6604945506336701720_n.jpg" alt="Event Concert">
+        </div>
+        <div class="category">Architecture</div>
+        <div class="gallery">
+            <img src="https://media.fastdl.app/get?__sig=3CxYjlWNplCjirxvB4_wXA&__expires=1740380852&uri=https%3A%2F%2Finstagram.fers3-1.fna.fbcdn.net%2Fv%2Ft51.29350-15%2F438712209_7353462561415977_3632807552076893454_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_tt6%26_nc_ht%3Dinstagram.fers3-1.fna.fbcdn.net%26_nc_cat%3D109%26_nc_oc%3DQ6cZ2AFCLuJK0VdPvPggi07oeNK47JwsgEgcqZBXN_YIwTCb8-9eJ_0hE9ixwSM34RlLpAk%26_nc_ohc%3D0eYzf_Wq3jcQ7kNvgHlcvIL%26_nc_gid%3D8d7a2ef7f07446eb94c89dde95b8a4b2%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYD2WyaSivxH3BtMXsIsvVxPDcxvFsy-3mh2jqZkO2wt-A%26oe%3D67C1E73B%26_nc_sid%3Dd885a2&filename=438712209_7353462561415977_3632807552076893454_n.jpg" alt="Architecture Building">
+            <img src="https://media.fastdl.app/get?__sig=hti0uspY5l0q1utS6ibGXA&__expires=1740381110&uri=https%3A%2F%2Fscontent-waw2-1.cdninstagram.com%2Fv%2Ft51.29350-15%2F409073430_381851477921170_8868165304046531755_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_tt6%26_nc_ht%3Dscontent-waw2-1.cdninstagram.com%26_nc_cat%3D110%26_nc_oc%3DQ6cZ2AF765-WhIU2n13c0vNpNDqQ3_hIFyLZjgyaPV6Lwg-NCspoTdqRkzwDcFx26X7pay0%26_nc_ohc%3DbHzTdYrCoRsQ7kNvgHL1fM5%26_nc_gid%3De5362e2f52e14cd7a5669983df665449%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYBoYA_nNoDtYIkhX-MMTg-GiQTYeeXiu1Ic3wONaVg0pA%26oe%3D67C20280%26_nc_sid%3Dd885a2&filename=409073430_381851477921170_8868165304046531755_n.jpg" alt="Architecture Interior">
+            <img src="https://media.fastdl.app/get?__sig=5a3bJT5YWvb6VKLqsYgyVg&__expires=1740381110&uri=https%3A%2F%2Fscontent-waw2-2.cdninstagram.com%2Fv%2Ft51.29350-15%2F429661728_378811264907515_2186747129352935952_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_tt6%26_nc_ht%3Dscontent-waw2-2.cdninstagram.com%26_nc_cat%3D107%26_nc_oc%3DQ6cZ2AF765-WhIU2n13c0vNpNDqQ3_hIFyLZjgyaPV6Lwg-NCspoTdqRkzwDcFx26X7pay0%26_nc_ohc%3DUvxKj9KbX3cQ7kNvgG78hf7%26_nc_gid%3De5362e2f52e14cd7a5669983df665449%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYC1M5Ae1GDBNbs7JG5U6DIIAdgS3pIlLiV4Mjv3OvtCpA%26oe%3D67C1EF21%26_nc_sid%3Dd885a2&filename=429661728_378811264907515_2186747129352935952_n.jpg" alt="Architecture Modern">
+        </div>
+        <div class="category">Wedding</div>
+        <div class="gallery">
+            <img src="https://media.fastdl.app/get?__sig=qF7OCe2KmAGUo5HBnqamJw&__expires=1740381208&uri=https%3A%2F%2Fscontent-iev1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F464122463_18445311787071797_3736177316307922346_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-iev1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGfHbk_kwyYRoAJulC_D6IbgG7ZU8j-91sWF4KDKnsqKk0JQpLwXOOgKoaY6ls6Ox8%26_nc_ohc%3Dv579iJXpF7QQ7kNvgF3iWF-%26_nc_gid%3D593216742d17424ba928a6ec6e401187%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYBVW0mRC7dQrmQMk9axitN1-T1FKsrjjnC6vK450EQD5g%26oe%3D67C1D332%26_nc_sid%3Dd885a2&filename=464122463_18445311787071797_3736177316307922346_n.jpg" alt="Wedding 1">
+            <img src="https://media.fastdl.app/get?__sig=1MKEr1TIUUnolLh8HlY4tQ&__expires=1740381208&uri=https%3A%2F%2Fscontent-iev1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F464141053_18445311796071797_1432914611917010527_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-iev1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGfHbk_kwyYRoAJulC_D6IbgG7ZU8j-91sWF4KDKnsqKk0JQpLwXOOgKoaY6ls6Ox8%26_nc_ohc%3DbWIvEwMQOJwQ7kNvgE_3msN%26_nc_gid%3D593216742d17424ba928a6ec6e401187%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYCEpgJzX50lRs_9eZlrMvRhj13_DbVlKOKZaMZKNSoJjw%26oe%3D67C1F182%26_nc_sid%3Dd885a2&filename=464141053_18445311796071797_1432914611917010527_n.jpg" alt="Wedding 2">
+            <img src="https://media.fastdl.app/get?__sig=A1gZhS8EYhqvS36xrq1Ezg&__expires=1740381208&uri=https%3A%2F%2Fscontent-iev1-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F464122455_18445311820071797_1651329662572022657_n.jpg%3Fstp%3Ddst-jpg_e35_s1080x1080_sh0.08_tt6%26_nc_ht%3Dscontent-iev1-1.cdninstagram.com%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGfHbk_kwyYRoAJulC_D6IbgG7ZU8j-91sWF4KDKnsqKk0JQpLwXOOgKoaY6ls6Ox8%26_nc_ohc%3D1iJ2LZr5huAQ7kNvgHKB4YZ%26_nc_gid%3D593216742d17424ba928a6ec6e401187%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYD3XSgAoJ1Gj8KgxACOrVzFwZ8-IwwBhj3J_9VYLi207w%26oe%3D67C1EA9F%26_nc_sid%3Dd885a2&filename=464122455_18445311820071797_1651329662572022657_n.jpg" alt="Wedding 3">
+        </div>
+        <div class="category">Love Bonds</div>
+        <div class="gallery">
+            <img src="https://media.fastdl.app/get?__sig=s6HREuWR_F4rAgV1mIbQgg&__expires=1740381532&uri=https%3A%2F%2Finstagram.fcor3-1.fna.fbcdn.net%2Fv%2Ft51.2885-15%2F469518441_18454647823071797_5606824176025350886_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_sh0.08_tt6%26_nc_ht%3Dinstagram.fcor3-1.fna.fbcdn.net%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGDgLKDU_IppH_2y7fXluqZBLxu1tgtyJlU8sZZkV4bqerGqP2eT32M1Ztmq3OldPQ%26_nc_ohc%3DmYIFXfjddGwQ7kNvgEJEH3Y%26_nc_gid%3D3cd1bc179414484395c9ff72ec476dac%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYBzLGmQSrnUqIqmuhPVAZI1GbysjE-nkrMDItIkB1btfw%26oe%3D67C1D8EC%26_nc_sid%3Dd885a2&filename=469518441_18454647823071797_5606824176025350886_n.jpg" alt="Love Bond 1">
+            <img src="https://media.fastdl.app/get?__sig=FsM5QqHn6h9Ck4dVY6Rv5g&__expires=1740381532&uri=https%3A%2F%2Finstagram.fcor3-1.fna.fbcdn.net%2Fv%2Ft51.2885-15%2F469593095_18454647835071797_1889523014979761237_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_sh0.08_tt6%26_nc_ht%3Dinstagram.fcor3-1.fna.fbcdn.net%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGDgLKDU_IppH_2y7fXluqZBLxu1tgtyJlU8sZZkV4bqerGqP2eT32M1Ztmq3OldPQ%26_nc_ohc%3DYP36PbiR3qkQ7kNvgEyqQs-%26_nc_gid%3D3cd1bc179414484395c9ff72ec476dac%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYAL0Okqmq4-kNx4m87_Pcjor_0zLRcXdTNLBeRmrJzG_Q%26oe%3D67C1CFAB%26_nc_sid%3Dd885a2&filename=469593095_18454647835071797_1889523014979761237_n.jpg" alt="Love Bond 2">
+            <img src="https://media.fastdl.app/get?__sig=stYtVPIEa5dqU4jiKqZCGA&__expires=1740381532&uri=https%3A%2F%2Finstagram.fcor3-1.fna.fbcdn.net%2Fv%2Ft51.2885-15%2F469915947_18454647844071797_3007946727945654023_n.jpg%3Fstp%3Ddst-jpg_e35_p1080x1080_sh0.08_tt6%26_nc_ht%3Dinstagram.fcor3-1.fna.fbcdn.net%26_nc_cat%3D105%26_nc_oc%3DQ6cZ2AGDgLKDU_IppH_2y7fXluqZBLxu1tgtyJlU8sZZkV4bqerGqP2eT32M1Ztmq3OldPQ%26_nc_ohc%3DWwPnDOpDA3oQ7kNvgGU5h_c%26_nc_gid%3D3cd1bc179414484395c9ff72ec476dac%26edm%3DANTKIIoBAAAA%26ccb%3D7-5%26oh%3D00_AYBlMAJhSS1NUrQf4BbhhmwOvDlz93CONeuLnSQaDYX3Zg%26oe%3D67C1D463%26_nc_sid%3Dd885a2&filename=469915947_18454647844071797_3007946727945654023_n.jpg" alt="Love Bond 3">
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Uday Photography. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/uday_sakhare_photography/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
